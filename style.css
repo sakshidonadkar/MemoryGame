@@ -1,0 +1,185 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: cursive;
+}
+
+body, html {
+    height: 100%;
+    width: 100%;
+    background-color: #121212;
+    background-image: url("https://wallpapers.com/images/hd/almost-black-with-navy-blue-background-aagwaqhmx0ggj2ny.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat:repeat;
+  height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 90%; /* Adjust width to be responsive */
+    width: 500px; /* Fixed size for medium screens */
+    margin: 2rem auto;
+    background: #fff;
+    padding: 1.5rem; /* Slightly increased padding for better spacing */
+    border-radius: 10px;
+    border: 2px solid #5fbae7;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.info {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    color: #000000;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    width: 100%;
+}
+
+.card {
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+    transform: rotateY(0);
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+    cursor: pointer;
+}
+
+.card.flipped {
+    transform: rotateY(180deg);
+}
+
+.card .front, .card .back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card .front {
+    background: #3f4548e6;
+    color: #fff;
+    font-size: 2.5rem;
+}
+
+.card .back {
+    background: #fff;
+    border: 2px solid #333;
+    transform: rotateY(180deg);
+}
+
+.card .back img {
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+}
+
+.restart-btn {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.restart-btn:hover {
+    background-color: #555;
+}
+
+.card.hidden {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s ease, visibility 1s ease;
+}
+  
+
+.win-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+}
+
+.win-message {
+    text-align: center;
+    background: #fff;
+    padding: 20px 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.win-message h1 {
+    font-size: 3rem;
+    color: #4caf50;
+}
+
+.win-message p {
+    font-size: 1.5rem;
+    color: #333;
+    margin: 10px 0;
+}
+
+.win-message .restart-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    color: #fff;
+    background-color: #4caf50;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.win-message .restart-btn:hover {
+    background-color: #45a049;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+@media (max-width: 768px) {
+    .grid {
+        gap: 0.5rem;
+    }
+
+    .card .front, .card .back {
+        font-size: 1.2rem;
+    }
+}
